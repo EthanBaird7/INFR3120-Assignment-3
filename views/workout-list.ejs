@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <%- include("partials/header") %>
+
+  <body>
+    <div class="container mt-5">
+      <h2 class="mb-4">All Workouts</h2>
+
+      <!-- Button to go to Add Workout page -->
+      <a href="/workouts/add" class="btn btn-success mb-3">Add New Workout</a>
+
+      <!-- Table displaying all workouts -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Muscle Group</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% workouts.forEach(workout => { %>
+            <tr>
+              <td><%= workout.exercise %></td>
+              <td><%= workout.muscleGroup %></td>
+              <td><%= workout.sets %></td>
+              <td><%= workout.reps %></td>
+              <td><%= workout.date.toDateString() %></td>
+              <td>
+                <!-- Edit button -->
+                <a href="/workouts/edit/<%= workout._id %>" class="btn btn-primary btn-sm">Edit</a>
+                <!-- Delete button -->
+                <a href="/workouts/delete/<%= workout._id %>" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <%- include("partials/footer") %>
+  </body>
+</html>

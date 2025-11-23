@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <%- include("partials/header") %>
+
+  <body>
+    <div class="container mt-5">
+      <h2>Edit Workout</h2>
+
+      <!-- Form to update existing workout -->
+      <form action="/workouts/edit/<%= workout._id %>" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Exercise Name</label>
+          <input type="text" name="exercise" class="form-control" value="<%= workout.exercise %>" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Muscle Group</label>
+          <input type="text" name="muscleGroup" class="form-control" value="<%= workout.muscleGroup %>" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Sets</label>
+          <input type="number" name="sets" class="form-control" value="<%= workout.sets %>" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Reps</label>
+          <input type="number" name="reps" class="form-control" value="<%= workout.reps %>" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Date</label>
+          <input type="date" name="date" class="form-control" value="<%= workout.date.toISOString().split('T')[0] %>" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Workout</button>
+        <a href="/workouts" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+
+    <%- include("partials/footer") %>
+  </body>
+</html>
