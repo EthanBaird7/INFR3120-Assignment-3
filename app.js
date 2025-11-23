@@ -35,11 +35,8 @@ app.get("/", (req, res) => {
 
 
 // DATABASE CONNECTION
-mongoose
-  .connect(process.env.DB_URI) // Connect to MongoDB using .env variable
-  .then(() => console.log("MongoDB Connected ✓"))
-  .catch((err) => console.log("Database Error:", err));
-
+const connectDB = require("./config/db");
+connectDB();
 
 // START SERVER
 app.listen(process.env.PORT, () =>
